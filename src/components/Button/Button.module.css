@@ -1,0 +1,71 @@
+.wrapper {
+  border-radius: 10px;
+  border: none;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lightblue {
+  background: #2899E0;
+}
+
+.red {
+  background: #F25D5D;
+}
+
+.teal {
+  background: #31A5A4;
+}
+
+.yellow {
+  background: #EA9517;
+}
+
+.green {
+  background: #37BE37;
+}
+
+.blue {
+  background: #3966AD;
+}
+
+.grey {
+  background: #C4C4C4;
+}
+
+.xs {
+  width: 53px;
+  height: 32px;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.sm {
+  width: 95px;
+  height: 32px;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.md {
+  width: 140px;
+  height: 40px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.lg {
+  width: 164px;
+  height: 40px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.xl {
+  width: 287px;
+  height: 40px;
+  font-size: 18px;
+  font-weight: 500;
+}

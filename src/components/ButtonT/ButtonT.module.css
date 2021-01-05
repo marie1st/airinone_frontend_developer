@@ -1,0 +1,78 @@
+.wrapper {
+  border-radius: 10px;
+  border-style: solid;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lightblue {
+  border: 2px solid #2899E0;
+  color: #2899E0;
+}
+
+.red {
+  border: 2px solid #F25D5D;
+  color: #F25D5D;
+}
+
+.teal {
+  border: 2px solid #31A5A4;
+  color: #31A5A4;
+}
+
+.yellow {
+  border: 2px solid #EA9517;
+  color: #EA9517;
+}
+
+.green {
+  border: 2px solid #37BE37;
+  color: #37BE37;
+}
+
+.blue {
+  border: 2px solid #0598db;
+  color: #0598db;
+}
+
+.grey {
+  border: 2px solid #C4C4C4;
+  color: #C4C4C4;
+}
+
+.xs {
+  width: 53px;
+  height: 32px;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.sm {
+  width: 95px;
+  height: 32px;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.md {
+  width: 140px;
+  height: 40px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.lg {
+  width: 164px;
+  height: 40px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.xl {
+  width: 287px;
+  height: 40px;
+  font-size: 18px;
+  font-weight: 500;
+}

@@ -1,0 +1,59 @@
+
+
+.wrapper{
+    font-family: inherit;
+    border-color:  #707070;
+    border-width: 1px;
+    border-radius: 5px;
+    height: 40px;
+    margin: 0 0 1rem 0;
+}
+
+.dropboxContainer{
+    font-family: inherit;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 322px;
+    height: 150px;
+    border: dashed 2px  #707070;
+    border-radius: 5px;
+    color: black;
+}
+
+.dropboxBody{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.textArea{
+    font-family: inherit;
+    width: 322px;
+    height: 172px;
+    border-radius: 5px;
+    border: solid 1px  #707070;
+    resize: none;
+}
+
+.searchButton{
+    margin-left: -92px;
+    width: 92px;
+    height: 44px;
+    border: solid 1px;
+    border-radius: 5px;
+    background-color: #3966AD;
+    color: white;
+}
+
+.searchBox{
+    padding-right: 93px;
+}
+
+.inputicon{
+    background-image: url(<BicalendarEvent>);
+    position: absolute;
+    right: 3px;
+    top: calc(50% - 0.5em); /* Keep icon in center of input, regardless of the input height */
+  }

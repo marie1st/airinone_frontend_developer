@@ -1,0 +1,29 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+}
+
+.item {
+  margin: 0 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.active {
+  margin: 0 2rem;
+  color: #2899E0;
+  pointer-events: none;
+}
+
+.line {
+  width: 2px;
+  height: 24px;
+  border-radius: 10px;
+  background: #000;
+}
+
+.icon {
+  margin-right: 6px;
+}
