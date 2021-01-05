@@ -1,0 +1,78 @@
+.page {
+  flex-grow: 1;
+  margin-bottom: 2rem;
+}
+
+.content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.space {
+  margin: 1rem 0;
+}
+
+.filter {
+  height: 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.filter-col {
+  display: flex;
+  flex-direction: column;
+  flex: 0.2;
+  margin: 2rem 0;
+}
+
+.filter-btn {
+  display: flex;
+  justify-content: space-between;
+  width: 440px;
+  margin: 2rem 0;
+}
+
+.three {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.three-col {
+  height: inherit;
+  flex: 0.32;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.three-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.card {
+  height: fit-content;
+  margin-bottom: 1rem;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+.width {
+  min-width: 300px;
+  width: 100%;
+}
+

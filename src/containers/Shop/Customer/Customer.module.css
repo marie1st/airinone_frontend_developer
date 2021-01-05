@@ -1,0 +1,80 @@
+.container{
+    width: 500px;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 20px;
+}
+.customer-label{
+    margin-left: 10px;
+}
+
+.group-header{
+    display: flex;
+}
+
+.customer-banner{
+    display: flex;
+    justify-content: space-between;
+    margin:10px 5px;
+}
+
+.customer-box{
+    margin-top: 25px;
+    display: flex;
+}
+
+.group-left-box{
+    display:flex
+}
+
+.data{
+    margin-left: 20px;
+}
+
+.name-phone{
+    display: flex;
+}
+
+.phone{
+    margin-left: 50px;
+    
+}
+
+.address{
+    margin-top: 10px;;
+}
+
+.button{
+    display: flex;
+}
+
+.button-space{
+    margin-left: 10px;
+}
+
+.set-title{
+    margin-top: 30px;
+    display: flex;
+    align-items: flex-end;
+}
+.set-row{
+    
+    display: flex;
+    align-items: flex-end;
+    
+}
+
+.set-inner-row{
+    margin: 5px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.set-button{
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px 10px;
+}

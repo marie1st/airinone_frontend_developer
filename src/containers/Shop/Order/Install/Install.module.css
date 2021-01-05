@@ -1,0 +1,220 @@
+.wrapperBody{
+  min-height: 840px;
+}
+.wrapperHeader{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+
+.wrapperHeaderContent{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.wrapperCard{
+  margin-top: 2rem;
+}
+
+.wrapperCardBody{
+  display: flex;
+  flex-direction: row;
+}
+
+.wrapperCardBodyAC{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-grow: 1;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-left: 2rem;
+  padding-right: 9rem;
+}
+
+.wrapperCardBodyC1{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 1rem;
+
+}
+
+.wrapperCardBodyC2{
+  display: flex;
+  flex-direction: column;
+}
+
+/* .wrapperCardBodyC3{
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapperCardBodyC4{
+  display: flex;
+  flex-direction: column;
+} */
+
+.wrapperFotter{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.wrapperStatus{
+  padding-left: 1rem;
+  display: flex;
+  flex-direction: row;
+  width: 35%;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+}
+
+.wrapperStatusContent{
+  color: #2899E0;
+}
+
+.flexRow {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+}
+
+.modalDetail{
+  width: 1288px;
+  height: 788px;
+}
+
+.modalDetailHeader{
+  padding-left: 7rem;
+}
+
+.modalDetailBody{
+  display: flex;
+  flex-direction: row;
+  padding-left: 7rem;
+}
+
+.modalDetailBodyC1{
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin-top: 2rem;
+}
+
+.modalDetailBodyC2{
+  display: flex;
+  flex-direction: column;
+  /* padding-left: 2rem; */
+  margin-top: 2rem;
+}
+
+.modalDetailBCC{
+  margin-top: 2rem;
+}
+
+.modalManage{
+  min-width: 1288px;
+  min-height: 594px;
+}
+
+.modalManageHeader{
+  padding: 0 2rem;
+}
+
+.modalManageCardHeader{
+  padding: 1rem 0;
+  margin-left: 2rem;
+}
+
+.modalManageCardContainerR1{
+  width: 95%;
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+.modalCardBodyC1Status{
+  display: flex;
+  flex-direction: row;
+  padding-top: 1rem;
+}
+
+.modalManageCardBodyR1{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 1.5rem;
+  padding-right: 10rem;
+}
+
+.modalManageCardBodyR2{
+  width: 95%;
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+.modalManageCardBodyR1C1{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalManageCardBodyR1Space{
+  margin:1.25rem 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.modalManageCardBodyR1IconSpace{
+  padding-top: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.modalManageCardBodyR1BadgeSpace{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.modalManageCardBodyR2Chief{
+  border-bottom: 1px solid #C6C6C6;
+}
+
+.modalManageCardBodyR2ChiefHeader{
+  display: flex;
+  padding-left: 1rem;
+}
+
+.modalManageCardBodyR2ChiefDetail{
+  padding-left: 3rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.modalManageCardBodyR2Mac{
+
+}
+
+.modalManageCardBodyR2MacHeader{
+  padding-top: 1rem;
+  display: flex;
+  padding-left: 1rem;
+}
+
+.modalManageCardBodyR2MacDetail{
+  padding-left: 3rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.BBottom{
+  padding: 0 2rem;
+  text-align: right;
+  display: flex;
+}

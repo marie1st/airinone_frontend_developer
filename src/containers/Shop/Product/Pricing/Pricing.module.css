@@ -1,0 +1,121 @@
+.page {
+  flex-grow: 1;
+  margin-bottom: 2rem;
+}
+
+.fill {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+}
+
+.space {
+  margin: 1rem 0;
+}
+
+.filter {
+  height: 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.filter-col {
+  display: flex;
+  flex-direction: column;
+  flex: 0.2;
+  margin: 2rem 0;
+}
+
+.filter-btn {
+  display: flex;
+  justify-content: space-between;
+  width: 440px;
+  margin: 2rem 0;
+}
+
+.container {
+  flex-grow: 1;
+}
+
+.overflow {
+  height: 500px;
+  overflow-y: scroll;
+}
+
+.card {
+  height: 200px;
+  margin-bottom: 2rem;
+}
+
+.body {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer {
+  display: flex;
+}
+
+.photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  background: lightgray;
+  margin: 0 1rem;
+}
+
+.text {
+  display: flex;
+  line-height: 2rem;
+  margin: 0 1rem;
+}
+
+.line {
+  border: 1px solid lightgray;
+  height: 100%;
+}
+
+.pricebox {
+  margin: 0 2rem;
+  font-size: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rednumber {
+  font-size: 41px;
+  color: red;
+}
+
+.modalbox {
+  width: 1000px;
+}
+
+.greybox{
+  background: #F7F7F7;
+  margin: 1rem 0;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown {
+  width: 200px;
+}
+
+.input {
+  width: 100%;
+}
