@@ -1,31 +1,31 @@
 import React from 'react'
 import styles from './Input.module.css'
-import BiCalendarEvent from 'react-icons'
 
 type Props = {
-  as?: 'text' | 'date'
+  as?: 'text' | 'date' 
   size?: 'sm' | 'md' | 'fluid'
   className?: string
   placeHolder?: string
-  label?:string
+  label?: string
+  id?:string
 }
 
 export const Calendar = ({
-  as = 'text',
+  as = 'date',
   size = 'sm',
   className,
   placeHolder,
-  label
+  label,
+  id
 }: Props) => {
   const tempSize = 'tb-size-' + size
   const boxStyle = `${styles.wrapper} ${tempSize} font-md weight-li ${className}`
-  const inputwrapper = `${styles.inputicon} ${tempSize} font-md weight-li ${className}`
   console.log(boxStyle)
 
   return (
     <div>
       <div>{label}</div>
-      <input id={inputwrapper} type={as} className={boxStyle} placeholder={placeHolder} />
+      <input type={as} className={boxStyle} placeholder={placeHolder} value = "20/10/2020 - 01/01/2021"/>
     </div>
   )
 }
