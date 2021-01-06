@@ -1,4 +1,4 @@
-import React, { useEffect, useState }from 'react'
+import React from 'react'
 import {
   Badge,
   Button,
@@ -23,70 +23,26 @@ import { RiUserSettingsLine } from 'react-icons/ri'
 import { BsX } from 'react-icons/bs'
 import styles from './Notification.module.css'
 import { useModal } from '../../../../hooks'
-import testdelete from '../../../../test-delete'
-import { Link } from 'react-router-dom'
-
-
-
 
 export const Notification = () => {
-  const modalDetail = useModal();
-  const modalAddOrder = useModal();
-  const modalManage = useModal();
-  const [orderData, setOrder] = useState([{order_id: "", brand: "", type_inverter: "", btu: "", type_cdu: "", type_fcu: "", model: "", appointment_date:"", time_period: "", type_of_work: "", amount: "", product: "", state: "", created_at: "", order_by: ""}]);
-  const [hasError, setErrors] = useState(false);
-  const [customerData, setCustomer] = useState([{id: "", first_name:"", last_name: "", phone_number: "", id_line: "", occupation: "", email: "", facebook: "", profile_pic:"", id_card_pic: "", address: "", country: "", province: "", subdistrict: "", district: "", postcode: "", created_at: ""}]);
-  const [customerAll, setCustomerAll] = useState([{id: "", first_name:"", last_name: "", phone_number: "", id_line: "", occupation: "", email: "", facebook: "", profile_pic:"", id_card_pic: "", address: "", country: "", province: "", subdistrict: "", district: "", postcode: "", created_at: ""}]);
-  var value = "";
-  var resDate = "";
-  var Dateapp = require('../../../../dateformat');
-  const [dateorder, setDate] = useState([{ dateformat: "" }]);
-  var post;
-  var orderdelete = require('./orderdelete');
-
-
-  async function fetchData() {
-    const res = await fetch("http://localhost:3000/order-products")
-      .then(res => res.json())
-      .then(res => setOrder(res))
-      .catch(err => setErrors(err));
-    const response = await fetch("http://localhost:3000/customers/")
-      .then(response => response.json())
-      .then(response => setCustomerAll(response));
-  }
-
-  function Dateformat() {
-    orderData.map((element) => {
-      const appointdate = element.appointment_date.split("T");
-      const appointdatereformat = appointdate[0].split("-");
-      resDate= appointdatereformat[2]+"/"+appointdatereformat[1]+"/"+appointdatereformat[0];
-    })
-  }
-
-
-
-  useEffect(() => {
-    fetchData();
-    Dateformat();
-  }, [])
-
+  const modalDetail = useModal()
+  const modalAddOrder = useModal()
+  const modalManage = useModal()
 
   return (
     <>
+      
       <Card.Container>
         <Card.Body className={`${styles.wrapperBody}`}>
           <div className={`${styles.wrapperHeader}`}>
             <div className={`${styles.wrapperHeaderContent} font-xl weight-md`}>
               <FaBell />
               แจ้งเตือนออเดอร์
-            </div>
-
+            </div><Spacer x={0.5} /><div className='circle'>3</div>
             <div className='flex'>
-              <Link to="">
-              <Button color="yellow" size="md">
+                <Button color="yellow" size="md">
                 <FaCalendarDay /> ปฎิทินช่าง
-              </Button>
-              </Link>
+                </Button>
               <Spacer x={0.25}/>
               <Button size="md" color="teal" onClick={modalAddOrder.open}>
                 <FaPlus />
@@ -94,34 +50,31 @@ export const Notification = () => {
               </Button>
             </div>
           </div>
-
-          {orderData.map((val, key) => (
-            <div>
+          {Array(3)
+            .fill('')
+            .map(() => (
               <Card.Container className={`${styles.wrapperCard}`}>
                 <Card.Body className={`${styles.wrapperCardBody}`}>
                   <div className={`${styles.wrapperCardBodyC1}`}>
                     <Badge color="yellow">ติดตั้ง</Badge>
                     <Badge>บริการ</Badge>
                   </div>
-                  <div className={`${styles.wrapperCardBodyAC} font-mr weight-re`}>
-                  <div className={`${styles.wrapperCardBodyC2}`}>
-                    {dateorder.map((term, k) =>
-                      <div>Timeformat{term.dateformat}</div>
-                    )}  
-                    <div>{resDate}</div>
-                    <div>วันที่นัดหมาย :{val.appointment_date}</div> <div></div>
-                      <div>เวลา : {val.time_period} {" "+ val.time_period}</div>
-                  </div>
-                  {customerAll.filter(customer => customer.id === `${val.order_by}`).map(filterName => (
+                  <div
+                    className={`${styles.wrapperCardBodyAC} font-mr weight-re`}
+                  >
                     <div className={`${styles.wrapperCardBodyC2}`}>
-                      <div>ชื่อ :{filterName.first_name + " " + filterName.last_name}</div>
+                      <div>วันที่นัดหมาย : 18/08/2020</div>
+                      <div>เวลา : ช่วงเช้า 10:00 - 12:00</div>
+                    </div>
+                    <div className={`${styles.wrapperCardBodyC2}`}>
+                      <div>ชื่อ : ชญณิพัฑฒ์ ธนะปรีดากุล</div>
                       <div>
-                        ที่อยู่ : {filterName.address + " " + filterName.district +" "+ filterName.subdistrict + " " +filterName.province + " " + filterName.country + " " + filterName.postcode}
+                        ที่อยู่ : 252 ถ.รัชดาภิเษก แขวงห้วยขวาง เขตห้วยขวาง
+                        กรุงเทพฯ 10310
                       </div>
                     </div>
-                  ))}
                     <div className={`${styles.wrapperCardBodyC2}`}>
-                      <div>ช่องทางการสั่งซื้อ : Walk In</div>
+                      <div>ช่องทางการสั่งซื้อ : Walk In-Out</div>
                     </div>
                   </div>
                 </Card.Body>
@@ -148,15 +101,13 @@ export const Notification = () => {
                       รับงาน
                     </Button>
                     <Spacer x={0.25} />
-                    <Button size="md" color="red" onClick ={() => orderdelete(val.order_id)}>
+                    <Button size="md" color="red">
                       <BsX />
                       ปฏิเสธงาน
                     </Button>
                   </div>
                 </Card.Footer>
               </Card.Container>
-              
-            </div>
             ))}
         </Card.Body>
       </Card.Container>
@@ -176,12 +127,8 @@ export const Notification = () => {
               <div>รุ่น :</div>
               <div>รายละเอียด :</div>
             </div>
-            {orderData.filter(order => order.order_id === "123456").map((val, key) =>(
             <div className={`${styles.flexColumn2}`}>
-                <div>#{val.order_id}</div>
-                {customerAll.filter(customer => customer.id === `${val.order_by}`).map(filterData => (
-                  <div></div>
-                ))}
+              <div>#1234567890</div>
               <div>ชญณิพัฑฒ์ ธนะปรีดากุล</div>
               <div>089-333-4444</div>
               <div>
@@ -198,10 +145,7 @@ export const Notification = () => {
                 cras, vestibulum justo elit amet non, in sed turpis. Vehicula
                 consectetuer voluptates fermentum phasellus magna{' '}
               </div>
- 
-              </div>
-  
-              ))}
+            </div>
           </div>
         </Modal.Body>
       </Modal>

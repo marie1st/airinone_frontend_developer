@@ -37,6 +37,10 @@ export const Notification = () => {
   const [hasError, setErrors] = useState(false);
   const [customerData, setCustomer] = useState([{id: "", first_name:"", last_name: "", phone_number: "", id_line: "", occupation: "", email: "", facebook: "", profile_pic:"", id_card_pic: "", address: "", country: "", province: "", subdistrict: "", district: "", postcode: "", created_at: ""}]);
   const [customerAll, setCustomerAll] = useState([{id: "", first_name:"", last_name: "", phone_number: "", id_line: "", occupation: "", email: "", facebook: "", profile_pic:"", id_card_pic: "", address: "", country: "", province: "", subdistrict: "", district: "", postcode: "", created_at: ""}]);
+  const [EmployeeData, setEmployee] = useState([{first_name: "", last_name: "", phone_number: "", birth_date: "", education_id: "", talent: "", etc: "", email: "", id_line: "", facebook: "", profile_pic: "", id_card_pic: "", address: "", country: "", province: "", subdistrict: "", postcode: "", start_date: "", salary: 0, super_id: "", created_at: "", employee_id: "", educationId: "",departmentId: "", roleId: "", employmentId: "", employement_id: ""}]);
+  const [boolChecked, setboolChecked] = useState(true);
+  const [isChecked, setisChecked] = useState(true);
+  const [EmployeeList, setEmployeeList] = useState([{}])
   var value = "";
   var resDate = "";
   var Dateapp = require('../../../../dateformat');
@@ -53,6 +57,9 @@ export const Notification = () => {
     const response = await fetch("http://localhost:3000/customers/")
       .then(response => response.json())
       .then(response => setCustomerAll(response));
+    const resp = await fetch("http://localhost:3000/employees")
+      .then(resp => resp.json())
+      .then(resp => setEmployee(resp));
   }
 
   function Dateformat() {
@@ -70,23 +77,25 @@ export const Notification = () => {
     Dateformat();
   }, [])
 
-
   return (
     <>
+      {orderData.map((val, key) => (
+        <div>
+          {customerAll.filter(customer => customer.id === `${val.order_by}`).map(filterName => (
+            <div>
+              {EmployeeData.map((employee, key_id) => (
+                <div>
       <Card.Container>
         <Card.Body className={`${styles.wrapperBody}`}>
           <div className={`${styles.wrapperHeader}`}>
             <div className={`${styles.wrapperHeaderContent} font-xl weight-md`}>
               <FaBell />
               แจ้งเตือนออเดอร์
-            </div>
-
+            </div><Spacer x={0.5} /><div className='circle'>3</div>
             <div className='flex'>
-              <Link to="">
-              <Button color="yellow" size="md">
+                <Button color="yellow" size="md">
                 <FaCalendarDay /> ปฎิทินช่าง
-              </Button>
-              </Link>
+                </Button>
               <Spacer x={0.25}/>
               <Button size="md" color="teal" onClick={modalAddOrder.open}>
                 <FaPlus />
@@ -94,34 +103,27 @@ export const Notification = () => {
               </Button>
             </div>
           </div>
-
-          {orderData.map((val, key) => (
-            <div>
               <Card.Container className={`${styles.wrapperCard}`}>
                 <Card.Body className={`${styles.wrapperCardBody}`}>
                   <div className={`${styles.wrapperCardBodyC1}`}>
                     <Badge color="yellow">ติดตั้ง</Badge>
                     <Badge>บริการ</Badge>
                   </div>
-                  <div className={`${styles.wrapperCardBodyAC} font-mr weight-re`}>
-                  <div className={`${styles.wrapperCardBodyC2}`}>
-                    {dateorder.map((term, k) =>
-                      <div>Timeformat{term.dateformat}</div>
-                    )}  
-                    <div>{resDate}</div>
-                    <div>วันที่นัดหมาย :{val.appointment_date}</div> <div></div>
-                      <div>เวลา : {val.time_period} {" "+ val.time_period}</div>
-                  </div>
-                  {customerAll.filter(customer => customer.id === `${val.order_by}`).map(filterName => (
+                  <div
+                    className={`${styles.wrapperCardBodyAC} font-mr weight-re`}
+                  >
                     <div className={`${styles.wrapperCardBodyC2}`}>
-                      <div>ชื่อ :{filterName.first_name + " " + filterName.last_name}</div>
+                          <div>วันที่นัดหมาย : {val.appointment_date}</div>
+                          <div>เวลา : ช่วงเช้า {val.time_period}</div>
+                    </div>
+                    <div className={`${styles.wrapperCardBodyC2}`}>
+                      <div>ชื่อ : {filterName.first_name + " " + filterName.last_name}</div>
                       <div>
-                        ที่อยู่ : {filterName.address + " " + filterName.district +" "+ filterName.subdistrict + " " +filterName.province + " " + filterName.country + " " + filterName.postcode}
+                      ที่อยู่ : {filterName.address + " " + filterName.district +" "+ filterName.subdistrict + " " +filterName.province + " " + filterName.country + " " + filterName.postcode}
                       </div>
                     </div>
-                  ))}
                     <div className={`${styles.wrapperCardBodyC2}`}>
-                      <div>ช่องทางการสั่งซื้อ : Walk In</div>
+                      <div>ช่องทางการสั่งซื้อ : Walk In-Out</div>
                     </div>
                   </div>
                 </Card.Body>
@@ -148,16 +150,13 @@ export const Notification = () => {
                       รับงาน
                     </Button>
                     <Spacer x={0.25} />
-                    <Button size="md" color="red" onClick ={() => orderdelete(val.order_id)}>
+                        <Button size="md" color="red" onClick={() => orderdelete(val.order_id)}>
                       <BsX />
                       ปฏิเสธงาน
                     </Button>
                   </div>
                 </Card.Footer>
               </Card.Container>
-              
-            </div>
-            ))}
         </Card.Body>
       </Card.Container>
 
@@ -176,32 +175,25 @@ export const Notification = () => {
               <div>รุ่น :</div>
               <div>รายละเอียด :</div>
             </div>
-            {orderData.filter(order => order.order_id === "123456").map((val, key) =>(
             <div className={`${styles.flexColumn2}`}>
-                <div>#{val.order_id}</div>
-                {customerAll.filter(customer => customer.id === `${val.order_by}`).map(filterData => (
-                  <div></div>
-                ))}
-              <div>ชญณิพัฑฒ์ ธนะปรีดากุล</div>
-              <div>089-333-4444</div>
+              <div>#{val.order_id}</div>
+              <div>{filterName.first_name + " " + filterName.last_name}</div>
+              <div>{filterName.phone_number}</div>
               <div>
-                252 ถ.รัชดาภิเษก แขวงห้วยขวาง เขตห้วยขวาง กรุงเทพฯ 10310
+              {filterName.address + " " + filterName.district +" "+ filterName.subdistrict + " " +filterName.province + " " + filterName.country + " " + filterName.postcode}
               </div>
-              <div>18/08/2020, ช่วงเช้า 10:00 - 12:00 น. </div>
-              <div>ติดตั้ง (1)</div>
-              <div>1</div>
-              <div>xxxxxxxx</div>
+              <div>{val.appointment_date}, ช่วงเช้า {val.time_period} </div>
+              <div>{val.type_of_work} (1)</div>
+              <div>{val.amount}</div>
+              <div>{val.model}</div>
               <div>
-                Lorem ipsum dolor sit amet, in blanditiis tortor. Tellus
-                vestibulum libero dui et platea pretium, neque aliquam vivamus,
-                id est, suscipit dui felis, tincidunt sed erat. In bibendum
-                cras, vestibulum justo elit amet non, in sed turpis. Vehicula
+                      Lorem ipsum dolor sit amet, in blanditiis tortor. Tellus
+                      vestibulum libero dui et platea pretium, neque aliquam vivamus,
+                      id est, suscipit dui felis, tincidunt sed erat. In bibendum
+                      cras, vestibulum justo elit amet non, in sed turpis. Vehicula
                 consectetuer voluptates fermentum phasellus magna{' '}
               </div>
- 
-              </div>
-  
-              ))}
+            </div>
           </div>
         </Modal.Body>
       </Modal>
@@ -209,7 +201,7 @@ export const Notification = () => {
         <Modal.Header>+ เพิ่มออเดอร์หน้าร้าน (Walk In)</Modal.Header>
         <Modal.Body>
           <div className={`${styles.flexColumn}`}>
-            Order
+                  Order
             <div className={`${styles.flexRow}`}>
               <div className={`${styles.flexColumn}`}>
                 <div>Brand</div>
@@ -241,7 +233,7 @@ export const Notification = () => {
           </div>
 
           <div className={`${styles.flexColumn}`}>
-            ช่องทางการรับทราบข่าวสาร
+                  ช่องทางการรับทราบข่าวสาร
             <div className={`${styles.flexRow}`}>
               <div className={`${styles.flexColumn}`}>
                 <div>แหล่งที่มา</div>
@@ -254,7 +246,7 @@ export const Notification = () => {
           </div>
 
           <div className={`${styles.flexColumn}`}>
-            ข้อมูลส่วนตัว
+                  ข้อมูลส่วนตัว
             <div className={`${styles.flexRow}`}>
               <div className={`${styles.flexColumn}`}>
                 <div>ชื่อ</div>
@@ -305,7 +297,7 @@ export const Notification = () => {
           </div>
 
           <div className={`${styles.flexColumn}`}>
-            สถานที่ติดตั้ง/ส่งสินค้า
+                  สถานที่ติดตั้ง/ส่งสินค้า
             <div className={`${styles.flexRow}`}>
               <div className={`${styles.flexColumn}`}>
                 <div>ที่อยู่</div>
@@ -337,7 +329,7 @@ export const Notification = () => {
           </div>
 
           <div className={`${styles.flexColumn}`}>
-            นัดหมาย
+                  นัดหมาย
             <div className={`${styles.flexRowNoSpace}`}>
               <div className={`${styles.flexColumn}`}>
                 <div>วันที่นัดหมาย</div>
@@ -352,7 +344,7 @@ export const Notification = () => {
 
           <div>
             <Button color="grey" onClick={modalAddOrder.close}>
-              ยกเลิก
+                    ยกเลิก
             </Button>
             <Button color="green">ยืนยันเพิ่มออเดอร์</Button>
           </div>
@@ -366,7 +358,7 @@ export const Notification = () => {
           </div>
         </Modal.Header>
         <Modal.Body>
-          ข้อมูลออเดอร์
+                ข้อมูลออเดอร์
           <Card.Container noShadow className={styles.cardContainer}>
             <Card.Body>
               <div className={`${styles.orderContent}`}>
@@ -376,10 +368,10 @@ export const Notification = () => {
                     <Badge>บริการ</Badge>
                   </div>
                   <div className={`${styles.contentDetailC1}`}>
-                    รหัสออเดอร์ : #1234567890
+                          รหัสออเดอร์ : #{val.order_id}
                   </div>
                   <div className={`${styles.contentDetailC2}`}>
-                    ชื่อลูกค้า : ชญณิพัฑฒ์ ธนะปรีดากุล
+                          ชื่อลูกค้า : {filterName.first_name + " " +filterName.last_name}
                   </div>
                 </div>
 
@@ -402,10 +394,10 @@ export const Notification = () => {
                   </div>
 
                   <div className={`${styles.contentDetailC1}`}>
-                    วันที่นัดหมาย : 18/08/2020
+                          วันที่นัดหมาย : {val.appointment_date}
                   </div>
                   <div className={`${styles.contentDetailC2}`}>
-                    เวลา : ช่วงเช้า 10:00 - 12:00
+                          เวลา : ช่วงเช้า {val.time_period}
                   </div>
                 </div>
               </div>
@@ -474,7 +466,7 @@ export const Notification = () => {
             </Button>
             <div className={styles.BBottom}>
               <Button color="grey" onClick={modalManage.close}>
-                ปิด
+                      ปิด
               </Button>
               <Button color="green">
                 <AiOutlineCheck />
@@ -483,7 +475,13 @@ export const Notification = () => {
             </div>
           </div>
         </Modal.Body>
-      </Modal>
+        </Modal>
+                  </div>
+                  ))}
+              </div>
+          ))}
+      </div>
+      ))}
     </>
   )
 }
