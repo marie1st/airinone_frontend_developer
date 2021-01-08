@@ -193,12 +193,33 @@
   flex-flow: row;
   justify-content: space-between;
 }
+        
+.span {
+  display: block;
+  height: 60px;
+  width: 60px;
+  line-height: 60px;
+
+  -moz-border-radius: 30px;
+  border-radius:30px;
+
+  background-color: red;
+  color: white;
+  text-align:center;
+  font-size: 2em;
+}
 
 .circle {
-  width: 10px;
-  height: 10px;
   background:red;
-  border: 1px solid red;
-
+  border-radius: 50%;
+  color: #fff;
+  height: 8.4em;
+  position: relative;
+  width: 8.4em;
 }
-        
+
+.circle-content {
+  hyphens: auto;
+  margin: 0.75em;
+  text-align: center;
+}
