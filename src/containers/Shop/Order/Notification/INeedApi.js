@@ -41,8 +41,8 @@ export const INeedApi = () => {
   const [customerData, setCustomer] = useState([{id: "", first_name:"", last_name: "", phone_number: "", id_line: "", occupation: "", email: "", facebook: "", profile_pic:"", id_card_pic: "", address: "", country: "", province: "", subdistrict: "", district: "", postcode: "", created_at: ""}]);
   const [customerAll, setCustomerAll] = useState([{id: "", first_name:"", last_name: "", phone_number: "", id_line: "", occupation: "", email: "", facebook: "", profile_pic:"", id_card_pic: "", address: "", country: "", province: "", subdistrict: "", district: "", postcode: "", created_at: ""}]);
   const [EmployeeData, setEmployee] = useState([{first_name: "", last_name: "", phone_number: "", birth_date: "", education_id: "", talent: "", etc: "", email: "", id_line: "", facebook: "", profile_pic: "", id_card_pic: "", address: "", country: "", province: "", subdistrict: "", postcode: "", start_date: "", salary: 0, super_id: "", created_at: "", employee_id: "", educationId: 0,departmentId: 0, roleId: 0, employmentId: 0, employement_id: 0}]);
-  const [CheckedHead, setHead] = useState([{ employee_id: "", type: true}]);
-  const [CheckedTech, setTech] = useState([{ employee_id: "", type: true}]);
+  const [CheckedHead, setHead] = useState([{ employee_id: "", type: false}]);
+  const [CheckedTech, setTech] = useState([{ employee_id: "", type: false}]);
   const [NewOrderData, setNewOrder] = useState([{order_id: "", brand: "", type_inverter: "", btu: "", type_cdu: "", type_fcu: "", model: "", appointment_date:"", time_period: "", type_of_work: "", amount: "", product: "", state: "", created_at: "", order_by: ""}]);
   const [NewCustomerData, setNewCustomer] = useState([{id: "", first_name:"", last_name: "", phone_number: "", id_line: "", occupation: "", email: "", facebook: "", profile_pic:"", id_card_pic: "", address: "", country: "", province: "", subdistrict: "", district: "", postcode: "", created_at: ""}])
   const [Date, setDate] = useState([{date: "", time_period: ""}])
@@ -96,7 +96,8 @@ export const INeedApi = () => {
             <div className={`${styles.wrapperHeaderContent} font-xl weight-md`}>
               <FaBell />
               แจ้งเตือนออเดอร์
-            </div><Spacer x={0.5} /><div className='circle'>3</div>
+              <Spacer x={0.5} /><div>({customerAll.length})</div>
+            </div>
             <div className='flex'>
                 <Button color="yellow" size="md">
                 <FaCalendarDay /> ปฎิทินช่าง
@@ -429,7 +430,7 @@ export const INeedApi = () => {
           <div>
             <div className={`${styles.flexRow}`}>
               <div>เลือกหัวหน้าช่าง</div>
-              <div>รายการที่เลือก: {CheckedHead.length}</div>
+              <div>รายการที่เลือก: {CheckedHead.lenght}</div>
             </div>
             <Card.Container noShadow className={styles.cardContainer}>
             {EmployeeData.filter(Employee => Employee.roleId === 1).map(filterEm => (
@@ -500,5 +501,7 @@ export const INeedApi = () => {
     </>
   )
 }
+
+const acceptworkHead = () => {}
 
 export default INeedApi;
