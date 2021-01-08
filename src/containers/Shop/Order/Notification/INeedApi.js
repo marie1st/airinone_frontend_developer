@@ -96,7 +96,7 @@ export const INeedApi = () => {
             <div className={`${styles.wrapperHeaderContent} font-xl weight-md`}>
               <FaBell />
               แจ้งเตือนออเดอร์
-              <Spacer x={0.5} /><div>({customerAll.length})</div>
+              <Spacer x={0.5} /><div>({orderData.length})</div>
             </div>
             <div className='flex'>
                 <Button color="yellow" size="md">
