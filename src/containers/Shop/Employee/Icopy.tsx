@@ -15,7 +15,6 @@ import { observer } from 'mobx-react-lite'
 import { useModal } from '../../../hooks'
 import { EmployeeCard } from './EmployeeCard'
 import styles from './Employee.module.css'
-import IEmployee from './iEmployee'
 
 export const Employee = observer(() => {
   const modal = useModal()
@@ -66,7 +65,17 @@ export const Employee = observer(() => {
               </div>
             </div>
           </div>
-        <IEmployee />
+          {exampleData.map((item) => {
+            return (
+              <EmployeeCard
+                role={item.role}
+                name={item.name}
+                phone={item.phone}
+                address={item.address}
+                className={`${styles['employee-box']}`}
+              />
+            )
+          })}
         </Card.Body>
       </Card.Container>
 

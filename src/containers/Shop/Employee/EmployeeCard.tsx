@@ -2,6 +2,7 @@ import React from 'react'
 import { Card, Button } from '../../../components'
 import { CgProfile } from 'react-icons/cg'
 import styles from './Employee.module.css'
+import testdelete from './test-delete'
 
 type Props = {
   role: string
@@ -9,6 +10,7 @@ type Props = {
   phone?: string
   address?: string
   className?: string
+  id?: number
 }
 
 export const EmployeeCard = ({
@@ -17,6 +19,7 @@ export const EmployeeCard = ({
   phone = '090-009-0990',
   address = '108 หมู่ 2 ถนนบางกรวย-จงถนอม ตำบลมหาสวัสดิ์ อำเภอบางกรวย จังหวัดนนทบุรี 11130',
   className,
+  id,
 }: Props) => {
   return (
     <Card.Container className={className}>
@@ -35,7 +38,7 @@ export const EmployeeCard = ({
         <div className={`${styles.button}`}>
           <Button color="yellow">แก้ไขรายชื่อ</Button>
           <div className={`${styles['button-space']}`}>
-            <Button color="red">ลบรายชื่อ</Button>
+            <Button color="red" onClick={() => testdelete(id)}>ลบรายชื่อ</Button>
           </div>
         </div>
       </Card.Body>
