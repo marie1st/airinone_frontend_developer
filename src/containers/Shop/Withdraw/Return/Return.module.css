@@ -214,3 +214,8 @@
   text-align: right;
   display: flex;
 }
+.wrapperText{
+  color: rgb #2899E0;
+  text-decoration-line: underline;
+  text-decoration-color: #2899E0;
+}
