@@ -11,7 +11,7 @@ import {
 } from '../../../../components'
 import { useModal } from '../../../../hooks'
 import styles from './Pricing.module.css'
-import IPriceingApi from './iPriceapi'
+import IStockApi from './iStockapi'
 
 export const Pricing = () => {
   const modal = useModal();
@@ -19,7 +19,7 @@ export const Pricing = () => {
   return (
     <>
 
-      <IPriceingApi />
+      <IStockApi />
     </>
   )
 }

@@ -1,26 +1,25 @@
-
-import React, { useEffect, useState } from 'react'
-import { FaCalculator, FaList, FaShoppingCart, FaTrash } from 'react-icons/fa'
-import {
-  Button,
-  Card,
-  SearchBox,
-  Dropdown,
-  Spacer,
-  Modal,
-  Textbox,
-} from '../../../../components'
-import { useModal } from '../../../../hooks'
+import React, { useEffect, useState }from 'react'
+import { Card, Table, Button, Modal, Dropdown, Spacer, Textbox, Textarea } from '../../../../components'
 import styles from './Pricing.module.css'
+import { useModal } from '../../../../hooks'
+import { SearchBox } from '../../../../components/Input/SearchBox'
+import { FaCalculator, FaList, FaShoppingCart, FaTrash } from 'react-icons/fa'
 import productdelete from './productdelete'
 
-export const IPricingApi = () => {
-  const modal = useModal()
+
+
+
+
+export const IStockApi = () => {
+  const modal= useModal();
   const [ErrorData, setErrors] = useState(false);
-  const [PromoData, setPromo] = useState([{ category: "", name: "", price: 0, description: ""}]);
-  const [ProductData, SetProduct] = useState([{ id : 0, name: "", brand: "", btu: "", selling_price: 0, promotion_id: 0, cost: 0, other_cost: 0, total_cost: 0, profit: 0, profit_percent: 0, wage_id: 0, item_price_id: 0, premium_setup_id: 0}]);
-  const [EntireProductData, SetEntireProduct] = useState([{ id : 0, name: "", brand: "", btu: "", selling_price: 0, promotion_id: 0, cost: 0, other_cost: 0, total_cost: 0, profit: 0, profit_percent: 0, wage_id: 0, item_price_id: 0, premium_setup_id: 0}]);
+  const [PromoData, setPromo] = useState([]);
+  const [ProductData, SetProduct] = useState([]);
+  const [EntireProductData, SetEntireProduct] = useState([]);
+  const [WarehouseData, SetWarehouse] = useState([]);
   const [SearchDetail, setSearch] = useState([{brand: "", name: "", btu: ""}]);
+
+
   async function fetchData() {
     const res = await fetch("http://localhost:3000/promotional-products-giveaways")
       .then(res => res.json())
@@ -32,28 +31,21 @@ export const IPricingApi = () => {
     const resp = await fetch("http://localhost:3000/product-n-prices")
       .then(resp => resp.json())
       .then(resp => SetEntireProduct(resp));
-   
+    const respn = await fetch("http://localhost:3000/warehouses")
+      .then(respn => respn.json())
+      .then(respn => SetWarehouse(respn));
   }
-  function handleDeepSearch (brand, name, btu) {
-    SetProduct([{ id : 0, name: "", brand: "", btu: "", selling_price: 0, promotion_id: 0, cost: 0, other_cost: 0, total_cost: 0, profit: 0, profit_percent: 0, wage_id: 0, item_price_id: 0, premium_setup_id: 0}]);
-    EntireProductData.filter(product => product.brand === brand && product.name === name && product.btu === btu).map((value, key) => (
-      SetProduct([{ id : value.id, name: value.name, brand: value.brand, btu: value.btu, selling_price: 0, promotion_id: 0, cost: 0, other_cost: 0, total_cost: 0, profit: 0, profit_percent: 0, wage_id: 0, item_price_id: 0, premium_setup_id: 0}])
-    ))
-  }
+
 
   useEffect(() => {
     fetchData();
   }, [])
-  
-  return (
-    <>
-{ProductData.map((prod, key)=>(
-  <div>
-    {PromoData.filter(promod=> promod.name === `${prod.name}`).map((promo, key)=>(
-      <div>
 
-        
-      <Card.Container className={styles.page}>
+  return (
+      
+    <>
+
+<Card.Container className={styles.page}>
         <Card.Body className={styles.fill}>
           <header className="flex items-baseline font-lg weight-md">
             <FaShoppingCart />
@@ -87,14 +79,17 @@ export const IPricingApi = () => {
               </div>
               <div className={styles['filter-btn']}>
                 <Button color="grey">ล้างข้อมูล</Button>
-                <Button color="teal" size="xl" onClick={()=>handleDeepSearch(SearchDetail.brand, SearchDetail.name, SearchDetail.btu)}>
+                <Button color="teal" size="xl" >
                   ค้นหาแบบละเอียด
                 </Button>
               </div>
             </Card.Footer>
           </Card.Container>
-
-          <div className={styles.container}>
+  {ProductData.map((prod, key)=>(
+  <>
+    {PromoData.filter(promod=> promod.name === `${prod.name}`).map((promo, key)=>(
+      <>
+   <div className={styles.container}>
             <div className={styles.overflow}>
                   <Card.Container className={styles.card}>
                     <Card.Body className={styles.body}>
@@ -107,11 +102,14 @@ export const IPricingApi = () => {
                         BTU : {prod.btu} BTU/h
                       </div>
                       <div className={styles.line} />
+                      {WarehouseData.filter(ware=> ware.name=`${prod.name}`).map((w, n)=>(
                       <div className={styles.text}>
                         สถานะสินค้า : ออนไลน์
                         <br />
-                        จำนวนสินค้าคงเหลือ : 10
+                        จำนวนสินค้าคงเหลือ : {w.amount}
                       </div>
+                ))}
+                      
                       <div className={styles.line} />
                       <div className={styles.text}>
                         ราคาขาย : {prod.selling_price} บาท
@@ -141,7 +139,14 @@ export const IPricingApi = () => {
                   </Card.Container>
             </div>
           </div>
-        </Card.Body>
+        
+
+      </>
+    ))}
+    </>
+  ))}
+
+</Card.Body>
       </Card.Container>
 
       {/* Modal here */}
@@ -245,8 +250,9 @@ export const IPricingApi = () => {
             </Card.Body>
           </Card.Container>
         </Modal.Body>
+        {ProductData.map((pr, num)=>(
         <Modal.Footer className={styles.row}>
-          <Button color="red">
+          <Button color="red" onClick ={()=>productdelete(pr.id)}>
             <FaTrash />
             ลบรายการ
           </Button>
@@ -255,14 +261,14 @@ export const IPricingApi = () => {
           <Button color="grey">ปิด</Button>
           <Button color="green">ยืนยัน</Button>
         </Modal.Footer>
+        ))}
       </Modal>
-      </div>
-    ))}
-  </div>
-))}
-         
+  
+       
     </>
   )
 }
 
-export default IPricingApi;
+
+
+export default IStockApi;
