@@ -29,7 +29,7 @@ export const IPromotionApi = () => {
   const [ErrData, SetErrors] = useState([]);
 
   async function fetchData() {
-    const res = await fetch("http://localhost:3000/promotional-products-prices")
+    const res = await fetch("http://localhost:3000/wages")
       .then(res => res.json())
       .then(res => SetWage(res))
       .catch(err => SetErrors(err));
