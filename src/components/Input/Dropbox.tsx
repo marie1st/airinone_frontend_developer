@@ -39,7 +39,7 @@ export const Dropbox = ({ label, id, filename }: Props) => {
       <div>{label}</div>
       <div className={styleName} {...getRootProps()}>
         <input {...getInputProps()} />
-        {isDragActive ? (
+        {isDragActive && !isDragReject ? (
           <p>Drop the files here ...</p>
         ) : (
           <div className={`${styles.dropboxBody}`}>
