@@ -52,7 +52,6 @@ export const INeedApi = () => {
   const [NewAppointmentData, setAppointment] = useState([{date: "", time_period: "", order_id: "", employee_id: ""}])
   var value = "";
   var resDate = "";
-  var Dateapp = require('../../../../dateformat');
   var post;
   var orderdelete = require('./orderdelete');
   var acceptworkapi = require('./acceptworkapi');
@@ -82,7 +81,6 @@ export const INeedApi = () => {
 
   useEffect(() => {
     fetchData();
-    Dateformat();
   }, [])
 
   return (
