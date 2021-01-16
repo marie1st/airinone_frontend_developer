@@ -26,8 +26,9 @@ export const Dropbox = ({ label, id, filename }: Props) => {
     const filesname = acceptedFiles.files[0].name
   }, [])
   
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
-      onDrop
+  const { getRootProps, getInputProps, isDragActive, isDragReject } = useDropzone({
+      onDrop,
+      accept: '.jpeg, .png'
         }
   )
 
